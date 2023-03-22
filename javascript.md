@@ -644,7 +644,15 @@ In general, immutable objects are considered safer to work with because their va
 
 32. ### Explain the difference between synchronous and asynchronous functions.
 <details><summary><b>Show Answer</b></summary>
+Synchronous and asynchronous are terms used to describe how functions or processes in computer programs execute and communicate with each other.
 
+A synchronous function is one that runs in a blocking manner, meaning that it halts the execution of the program until it completes its task. This means that the program waits for the function to finish before it can move on to the next line of code. Synchronous functions are typically straightforward and easy to read, but they can also make the program slow and unresponsive if they take a long time to complete.
+
+An asynchronous function, on the other hand, runs in a non-blocking manner, which means that it does not halt the execution of the program. Instead, it returns control to the program immediately and allows it to continue running while the asynchronous function is executed in the background. This means that other lines of code can be executed while the asynchronous function is running, which can improve the program's performance and responsiveness.
+
+Asynchronous functions typically use callbacks, promises, or async/await syntax to communicate their results back to the program. These methods allow the program to receive the result of the asynchronous function when it's done, without having to wait for it to complete.
+
+In summary, synchronous functions block the program until they finish their task, while asynchronous functions allow the program to continue running while they execute in the background.
 </details>
 
 33. ### What is event loop? What is the difference between call stack and task queue?
@@ -664,7 +672,22 @@ In general, immutable objects are considered safer to work with because their va
 
 36. ### What is the definition of a higher-order function?
 <details><summary><b>Show Answer</b></summary>
+In JavaScript, a higher-order function is a function that takes one or more functions as arguments and/or returns a function as its result. This means that a higher-order function can operate on functions as data, just like any other variable.
 
+Higher-order functions are an important feature of functional programming, as they allow for the composition of functions and the creation of more abstract, reusable code. Some common examples of higher-order functions in JavaScript include map, filter, reduce, sort, and forEach.
+
+For instance, the map() function is a higher-order function that takes an array and a function as arguments, and returns a new array where each element is the result of applying the function to the corresponding element in the original array. Here's an example:
+
+```
+const numbers = [1, 2, 3, 4, 5];
+
+const doubledNumbers = numbers.map(function(num) {
+  return num * 2;
+});
+
+console.log(doubledNumbers); // [2, 4, 6, 8, 10]
+
+In this example, the map() function takes an array of numbers and a function that doubles each number. The map() function then returns a new array with each number doubled.
 </details>
 
 37. ### Can you give an example of a curry function and why this syntax offers an advantage?
@@ -679,10 +702,20 @@ In general, immutable objects are considered safer to work with because their va
 
 39. ### What is the difference between function scope and block scope in JavaScript?
 <details><summary><b>Show Answer</b></summary>
+In JavaScript, scope defines the area where a variable or function is accessible. There are two types of scopes in JavaScript: function scope and block scope.
 
+Function scope refers to the accessibility of variables declared inside a function. Variables declared inside a function are only accessible within that function and cannot be accessed outside of it. This means that they have a local scope and are not available in the global scope.
+
+Block scope, on the other hand, refers to the accessibility of variables declared inside a block of code. A block of code is any set of statements enclosed in curly braces {}. Variables declared inside a block of code, such as a loop or an if statement, are only accessible within that block and cannot be accessed outside of it. This means that they also have a local scope and are not available in the global scope.
+
+To summarize, variables declared with var have function scope and variables declared with let and const have block scope. It is recommended to use let and const instead of var to avoid potential issues with variable hoisting and unintended global variables.
 </details>
 
 40. ### What will this do and why? var foo = 10 + '20';
 <details><summary><b>Show Answer</b></summary>
+In JavaScript, the + operator can be used for both addition and string concatenation, depending on the types of its operands.
 
+In the expression var foo = 10 + '20';, the + operator is used with a number (10) and a string ('20'). Since one of the operands is a string, JavaScript will perform string concatenation and produce a string result.
+
+The result of 10 + '20' is the string '1020'. Therefore, the variable foo will be assigned the value '1020'.
 </details>
