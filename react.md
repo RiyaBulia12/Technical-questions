@@ -338,3 +338,241 @@ The store can also be enhanced with middleware to add additional functionality s
 
 Overall, the store plays a critical role in Redux by providing a centralized location to store and manage the application state.
 </details>
+
+## REACT Hooks
+### What do you understand by React hooks, why it was introduced in React and describe its benefits
+<details><summary><b>Show Answer</b></summary>
+React Hooks is a feature introduced in React that allows developers to use state and other React features without using class components. With React Hooks, developers can create functional components and use state, lifecycle methods, and other React features like a class component.
+Before React Hooks, class components were the primary way of managing state and lifecycle methods in React. However, class components are often difficult to read and maintain, especially for beginners. React Hooks simplifies the process of managing state and lifecycle methods in React, making it easier to understand and use.
+  
+React Hooks comes with several benefits:
+- Simplified code: Hooks allow you to write cleaner and more concise code. You can easily separate the concerns of your application by breaking them into smaller, reusable hooks.
+- Improved performance: Hooks can be optimized for performance, making your application faster and more efficient.
+- Reusability: Hooks can be used in multiple components, making it easier to reuse code and improve the maintainability of your application.
+- Flexibility: Hooks can be used to manage any kind of state or side effect in your application, giving you more flexibility and control.
+
+  In summary, React Hooks is a feature introduced in React that simplifies the process of managing state and lifecycle methods in React. It provides several benefits, including simplified code, improved performance, reusability, and flexibility.
+</details>
+
+### What is the use of useState() in React Hooks?
+<details><summary><b>Show Answer</b></summary>
+Sure! In React, useState() is a built-in function that allows functional components to have state, which means the ability to hold and update data over time. Before the introduction of React Hooks, class components were the only way to create stateful components.
+
+useState() works by taking an initial value and returning an array with two elements - the first element is the current state value, and the second element is a function that can be used to update the state value. When the state value is updated using the function returned by useState(), React will automatically re-render the component to reflect the new state.
+
+Here's an example: let's say you want to create a counter component that increases by 1 each time a button is clicked. Using useState(), you can initialize the state to 0 and create a function that increases the state by 1 when the button is clicked:
+```
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  function handleClick() {
+    setCount(count + 1);
+  }
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={handleClick}>Click me!</button>
+    </div>
+  );
+}
+
+export default Counter;
+```
+In this example, count is the state value initialized to 0, and setCount is the function that updates the state value. handleClick() is the function that calls setCount() to update the state when the button is clicked.
+</details>
+
+### What is the use of useEffect() in React Hooks?
+<details><summary><b>Show Answer</b></summary>
+useEffect() is a built-in function in React Hooks that allows you to run side effects in your functional components. Side effects are any actions that your component might perform outside of rendering, such as fetching data, manipulating the DOM, or subscribing to events.
+
+In simple terms, useEffect() lets you perform certain actions after a component has rendered or re-rendered. You can use it to manage stateful logic, like fetching data from an API, updating the DOM, or subscribing to a data stream.
+
+The function takes two arguments: a callback function and an optional array of dependencies. The callback function is the code that you want to run after a component has rendered or re-rendered. The dependencies array is an optional argument that lets you specify any values that the callback function depends on. If any of the values in the dependencies array change, the callback function will run again.
+
+```
+import React, { useState, useEffect } from 'react';
+
+function MyComponent() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    // This function will be called after every render
+    console.log('Component rendered or updated');
+  });
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+In this example, the useEffect() function is used to log a message to the console after every render. This is useful for debugging and understanding how your component is working.
+</details>
+
+### What is the use of useRef() in React Hooks? Why do React Hooks make use of refs?
+<details><summary><b>Show Answer</b></summary>
+useRef() is a hook function in React that returns a mutable ref object. The ref object can be used to store a reference to a DOM element or a value that persists across renders.
+
+React Hooks make use of refs because they provide a way to access the DOM elements or other values that are not a part of the component state. Using refs can be useful in situations where we need to imperatively manipulate the DOM, for example, setting the focus on an input field or measuring the dimensions of an element.
+
+One important difference between using refs and state is that changes to a ref object do not trigger a re-render of the component. This makes refs a useful tool for managing state that should not cause a component to re-render unnecessarily.
+
+In summary, useRef() is a hook in React that provides a way to create a mutable ref object, which can be used to store a reference to a DOM element or other values that need to persist across renders. React Hooks make use of refs to allow components to imperatively manipulate the DOM and manage state that should not trigger a re-render.
+</details>
+
+### What is the use of the useCallback() hook?
+<details><summary><b>Show Answer</b></summary>
+In React, components can re-render frequently due to changes in props or state. This can be a performance issue, especially if a component re-renders unnecessarily. The useCallback() hook is used to optimize the performance of functional components by memoizing a function that is created inside the component.
+
+When a function is memoized, it means that React will only re-create the function when its dependencies change. By wrapping a function with useCallback(), you ensure that the function is only created once, and subsequent renders will use the same function reference as long as the dependencies have not changed.
+
+This is particularly useful when passing functions as props to child components, because it prevents unnecessary re-renders of the child components.
+
+Overall, useCallback() is a way to optimize the performance of your React application by reducing unnecessary re-renders and memoizing functions.
+</details>
+
+### What is the use of the useMemo() hook?
+<details><summary><b>Show Answer</b></summary>
+The useMemo() hook is used in React to optimize the performance of your application by preventing unnecessary re-renders.
+
+In simple terms, when you have a component that depends on some data or variables that might change frequently, every time that data changes, React re-renders the component to reflect the new state. However, sometimes re-rendering can be expensive in terms of time and resources, especially if the component is complex.
+
+The useMemo() hook allows you to memoize the result of a function, so that it only re-executes that function if one of its dependencies has changed. This means that if the input variables to the function haven't changed, the previously computed output is returned instead of running the function again.
+
+By using useMemo(), you can prevent unnecessary re-execution of expensive functions, and improve the performance of your application. It's particularly useful when you have a large list or table that depends on complex calculations, or when you're dealing with large amounts of data that are frequently updated.
+
+</details>
+
+### Name the rules that must be followed while using React Hooks.
+<details><summary><b>Show Answer</b></summary>
+React Hooks are a powerful feature introduced in React 16.8 that allow developers to use state and other React features in functional components. Here are some rules to keep in mind when using React Hooks:
+
+Only call Hooks at the top level of your function or custom Hook: This means that you should only call Hooks at the top level of your function or custom Hook, and not inside loops, conditions, or nested functions. This ensures that the order of Hooks is consistent on every render.
+
+Only call Hooks from React function components or custom Hooks: You cannot call Hooks from regular JavaScript functions, class components, or outside a React component. This is because Hooks rely on the component's lifecycle methods to work correctly.
+
+Use the same order of Hooks on every render: React relies on the order of Hooks to be consistent on every render. If you change the order of Hooks, you might get unexpected behavior or bugs.
+
+Don't use Hooks conditionally: Hooks should be used unconditionally in your component. Don't use them inside a condition or a switch statement, because React needs to be able to call all the Hooks on every render.
+
+Don't use Hooks inside loops: Hooks should be used outside of loops, because React needs to be able to keep track of the state associated with each Hook.
+Custom Hooks are a feature of React, a popular JavaScript library for building user interfaces. In simple terms, Custom Hooks allow developers to create reusable pieces of logic that can be shared between components.
+</details>
+
+### What do you know about the Custom Hooks?
+<details><summary><b>Show Answer</b></summary>
+In React, Hooks are functions that allow you to use state and other React features in functional components, which were previously only available in class components. Custom Hooks are simply functions that use other Hooks inside them and can be shared between different components in a React application.
+
+By creating Custom Hooks, developers can extract logic from components and place it in a separate function, making it easier to reuse that logic in other parts of the application. For example, if you have some logic for fetching data from an API that you need to use in multiple components, you can create a Custom Hook that handles the API request and returns the data.
+
+Custom Hooks can help make code more organized, reusable, and easier to maintain. They are a powerful feature of React that can help developers write cleaner and more efficient code.
+</details>
+
+### Below we have a class component with a state value. How can you rewrite this component using react hooks?
+```
+class Count extends Component {
+    state = {
+      value: 0,
+    };
+ 
+    incrementValue = () => {
+      this.setState({
+        value: this.state.value + 1,
+      });
+    };
+ 
+    render() {
+      return (
+        <div>
+          <button onClick={this.incrementValue}>Count:{this.state.value}</button>
+        </div>
+      );
+    }
+  }
+```
+
+<details><summary><b>Show Answer</b></summary>
+
+```
+import React, { useState } from "react";
+
+const Count = () => {
+ const [value, setvalue] = useState(0);
+
+  return (
+    <div>
+      <button
+        onClick={() => {
+          setCount(value + 1);
+        }}
+      >
+        Count: {value}
+      </button>
+    </div>
+  );
+}
+```
+  
+</details>
+
+### How can you update the current state value based on the previous state value using react hooks?
+<details><summary><b>Show Answer</b></summary>
+Thing is that you can update the current state value by passing the new value to the update function or by passing a callback function. The second technique is safe to use. Below, is the code for updating the current state value based on the previous state.
+```import React, { useState } from "react";
+
+const Count = () => {
+ const [value, setValue] = useState(0);
+
+ const increment= () => {
+   setCount((prevValue) => {
+     return prevValue + 1;
+   });
+ };
+
+ const decrement = () => {
+   setCount((prevValue) => {
+     return prevValue - 1;
+   });
+ };
+
+ return (
+   <div>
+     <strong>Count: {value}</strong>
+     <button onClick={increment}>Increment</button>
+     <button onClick={decrement}>Decrement</button>
+   </div>
+ );
+}
+```
+
+</details>
+
+### You are given a code snippet in the form of a class component that registers and removes an event listener. Can you rewrite this using the react hooks?
+```
+componentDidMount() {
+window.addEventListener("mousemove",this.handleMousePosition);
+}
+
+componentWillUnmount() {
+  window.removeEventListener("mousemove",this.handleMousePosition);
+}
+```
+<details><summary><b>Show Answer</b></summary>
+The react-hook version of the code is shown below,
+```
+useEffect(() => {
+   window.addEventListener("mousemove", handleMousePosition);
+
+   return () => {
+    window.removeEventListener("mousemove",handleMousePosition);
+   };
+}, []);
+```
+</details>
